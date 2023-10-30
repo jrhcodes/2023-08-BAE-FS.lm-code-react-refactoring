@@ -3,6 +3,7 @@ import { useFetch } from "./hooks/useFetch";
 import { useHero } from "./hooks/useHero";
 import { v4 as uuid } from "uuid";
 import "./App.css";
+import { SiteHeader } from "./components/SiteHeader";
 
 function App() {
   const [trips, setTrips] = useState(0);
@@ -13,7 +14,7 @@ function App() {
 
   useEffect(() => {
     setNav(() => {
-      return ["trending", "your orders", "community"];
+      return ["Trending", "Your Orders", "Community"];
     });
     if (heroics) if (data) setTrips(data.length);
   }, [data, heroics]);
@@ -25,9 +26,8 @@ function App() {
       const experience = stuff[0];
       const cost = parseInt(stuff[1]);
       alert(
-        `Okie dokie, so you've bought the '${experience}' excursion, at a cost of ${
-          cost &&
-          cost.toLocaleString("en-GB", { style: "currency", currency: "GBP" })
+        `Okie dokie, so you've bought the '${experience}' excursion, at a cost of ${cost &&
+        cost.toLocaleString("en-GB", { style: "currency", currency: "GBP" })
         }\rNice one 🚀`
       );
     }
@@ -45,27 +45,7 @@ function App() {
 
   return (
     <>
-      <header className="site-header">
-        <div className="site-identity">
-          <a>
-            <img
-              className="eefe-logo"
-              src="/icons8-space-64.png"
-              alt="eefe spaceship logo"
-            />
-          </a>
-          <h1>Extraterrestrial Excursions for Earthlings</h1>
-        </div>
-        <ul className="go-somewhere">
-          {nav.map((place) => {
-            return (
-              <li key={place}>
-                <a>{place}</a>
-              </li>
-            );
-          })}
-        </ul>
-      </header>
+      <SiteHeader nav={nav} />
 
       {waitAMo && <p>...getting heroics...</p>}
       {heroics && (

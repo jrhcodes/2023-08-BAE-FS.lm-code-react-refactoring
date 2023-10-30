@@ -20,6 +20,7 @@
 h1 {
   line-height: 3rem;
   font-size: 3.2em;
+  color: black;
 }
 
 ul {
@@ -46,6 +47,7 @@ body {
   display: flex;
   min-width: 320px;
   min-height: 100vh;
+  color:white;
 }
 
 h3 {

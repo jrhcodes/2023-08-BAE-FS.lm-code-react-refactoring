@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 
 export const useFetch = () => {
-  const [data, setData] = useState<TripDatum[] | null>(null);
+  const [data, setData] = useState<TripDescription[] | null>(null);
   const [isLoading, setIsLoading] = useState<boolean>(false);
   const [error] = useState(null);
 
@@ -16,7 +16,7 @@ export const useFetch = () => {
   return { data, isLoading, error };
 };
 
-interface TripDatum {
+interface TripDescription {
   id: string;
   tripName: string;
   description: string;
@@ -26,7 +26,7 @@ interface TripDatum {
   isBookable: boolean;
 }
 
-type TripData = Array<TripDatum>;
+type TripData = Array<TripDescription>;
 
 const tripData: TripData = [
   {
